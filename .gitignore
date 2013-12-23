@@ -11,3 +11,9 @@
 *.lai
 *.la
 *.a
+
+# Old SDL attempt folder
+src/old
+
+# Binary
+bin/*
