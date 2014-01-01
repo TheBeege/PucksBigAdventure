@@ -14,6 +14,10 @@ and may not be redistributed without written permission.*/
 
 #include <string>
 
+#include <libconfig.h++>
+
+using namespace libconfig;
+
 
 
 //Screen dimension constants
@@ -69,6 +73,7 @@ SDL_Surface* gPNGSurface = NULL;
 bool init()
 
 {
+
 
 	//Initialization flag
 
@@ -265,6 +270,27 @@ SDL_Surface* loadSurface( std::string path )
 int main( int argc, char* args[] )
 
 {
+
+	// Setup configs
+	static const char *cfg_file = "../cfg/main_modified.conf
+	
+	Config cfg;
+
+	try {
+		cfg.readFile("../cfg/main.conf")
+	} catch(const FileIOException &fioex) {
+		std::cerr << "I/O error while reading file." << std::endl;
+		return (EXIT_FAILURE);
+	} catch(const ParseException &pex) {
+		std::cerr << "Parse error at " << pex.getFile() << ":" << pex.getLine() << " - " << pex.getError() << std::endl;
+		return(EXIT_FAILURE);
+	}
+
+	Setting &root = cfg.getRoot();
+
+	if(! root.exists("display"))
+		root.add("display", Setting::TypeGroup);
+
 
 	//Start up SDL and create window
 

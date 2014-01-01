@@ -8,7 +8,7 @@ CXXFLAGS += -I$(SDL) -I$(IDIR) -g
 ODIR=obj
 LDIR=../lib
 #LDLIBS += $(pkg-config --libs sdl2)
-LDLIBS += -lSDL2 -lSDL2_image
+LDLIBS += -lSDL2 -lSDL2_image -lconfig++
 
 _DEPS = 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
