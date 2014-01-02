@@ -11,4 +11,5 @@ public:
     
 private:
 	Core *core;
+	ScreenImage *puck;
 };

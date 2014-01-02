@@ -14,8 +14,8 @@ HelloPolycodeApp::HelloPolycodeApp(PolycodeView *view) : EventHandler() {
 	ScreenLabel *label = new ScreenLabel("Hello, Polycode!", 32);
 	screen->addChild(label);
 
-	ScreenImage *image = new ScreenImage("../assets/img/PuckNorm.png");
-	screen->addChild(image);
+	puck = new ScreenImage("../assets/img/PuckNorm.png");
+	screen->addChild(puck);
 }
 
 HelloPolycodeApp::~HelloPolycodeApp() {
@@ -23,5 +23,7 @@ HelloPolycodeApp::~HelloPolycodeApp() {
 }
 
 bool HelloPolycodeApp::Update() {
+    puck->setPosition(puck->getPosition2D().x + 1, puck->getPosition2D().y);
+
     return core->updateAndRender();
 }
